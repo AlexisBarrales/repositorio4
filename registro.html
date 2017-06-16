@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="icon" href="ico.png" type="image/gif" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">.
+    <script src="funciones.js"></script>
+    <title>Crear cuenta</title>
+</head>
+<style>
+::-webkit-input-placeholder { color: white; } 
+:-moz-placeholder { color: white; } 
+::-moz-placeholder { color: white; } 
+:-ms-input-placeholder { color: white; }
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+                font-weight: lighter;
+
+    }   
+    body, html{
+        width: 100%;
+        height: 100%;
+        padding-bottom: 10px;
+        background-color: rgba(0,0,0,.7) ;
+    }
+    
+    .contenedor{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.8);
+        margin-top: -20px;
+    }
+    .login{
+        width: 80%;
+        height: 80%;
+        /*background-color: aqua;*/
+        margin-left: 10%;
+
+    }
+    .img{
+        width: 40%;
+        margin-left: 30%;
+        margin-bottom: 30px;
+        
+        /*background-color: firebrick;*/
+    }
+    .img>img{
+        width: 100%;
+        height: 100%;
+        margin-top: 50px;
+    }
+    .txt{
+        width: 100%;
+        text-align: center;
+        font-size: 2em;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        color: white;
+    }    
+    .txt>p{
+        color:#F9540C;
+    }
+    .input{
+        width: 80%;
+        /*background-color: forestgreen;*/
+        margin-left: 10%;
+        
+    }
+    input[type=text],input[type=password]{
+        width: 100%;
+        height: 40px;
+        padding-left: 20px;
+        font-size: 1em;
+        margin-bottom: 10px;
+        background-color: rgba(0,0,0,0);
+        border: none;
+        border-bottom: 1px solid #a9a9a9;
+        color: white;
+        outline: none;   
+        transition: all .4s;
+        box-sizing: border-box;
+    }
+    #comp{
+        margin-bottom: 50px;
+    }
+    input[type=text]:focus{
+    height: 50px;
+    border-bottom: 1px solid #F9540C;
+        
+    }
+    input[type=password]:focus{
+    height: 50px;
+    border-bottom: 1px solid #F9540C;
+  
+    }
+    input[type=submit]{
+            width: 60%;
+        height: 40px;
+        border-radius: 5px;
+        font-size: 1em;
+        margin-left: 20%;
+        background-color: rgba(0,0,0,0);
+        border: 1px solid white;
+        color: white;
+        transition: ease .1s;
+        outline: none;
+    }
+    input[type=submit]:active{
+        
+        background-color: #F9540C;
+        border: none;
+        color: white;
+    }
+    .alerta{
+        background-color: orange;
+   /*      width: 80%;
+   height: 200px; 
+
+        margin-left: 10%;
+        margin-top:35%;
+     */ 
+        width: 0%;
+        height: 0px; 
+        left: 49%;
+        top:calc(50% - 1px);
+        padding-top: 5px;
+        padding-bottom: 25px;
+        box-shadow: 0px 8px 10px rgba(0,0,0,.5);
+        transition:all .3s;
+        z-index: 1001 !important;
+        position: absolute;
+        
+    }
+    .alerta>h1{
+        width: 100%;
+        text-align: center;
+        color: white;
+        margin-bottom: 10px;
+    }
+    .alerta>h2{
+        width: 80%;
+        text-align: center;
+        margin-left: 10%;
+        height: 100px;
+        font-size: 1.2em;
+        
+    }
+    
+</style>
+
+<body>
+   <div class="contenedor">
+      <div class="login">
+          <div class="img">
+              <img src="ico.png" alt="">
+          </div>
+          <div class="formulario">
+              <div class="txt">
+                  <p>Crear cuenta</p>
+              </div>
+              <div class="input">
+                  <input type="text" id="nombre" class="nombre" placeholder="Nombre completo">
+                  <input type="text" id="correo" class="correo" placeholder="usuario@ejemplo.com">
+                  <input type="password" id="contra" class="contra" placeholder="Contraseña">
+                  <input type="password" id="comp" class="contra" placeholder="Verifique contraseña">
+                  <input type="submit" class="btn" value="Registrate" onclick="cambioHtmlR('index')">
+              </div>
+          </div>
+      </div>
+      <div class="alerta">
+            <h1 id="titulo"></h1>
+            <h2 id="mensaje"></h2>
+      </div>
+   </div>
+    
+</body>
+</html>
