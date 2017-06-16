@@ -32,7 +32,7 @@ function HtmlIndex(nombre){
         
     
         if(correo==correoBD && contra == contrasenaBD){
-           
+           navigator.vibrate([200, 200 ,300])
            localStorage.setItem('Sesion', correo);
            location.assign(nombre+'.html');
                 
