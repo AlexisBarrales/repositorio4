@@ -273,7 +273,8 @@ padding-top:25%;
     .individualKil{
         color: white;
         margin-bottom: 20px;
-        
+        border-bottom: 1px solid rgba(255, 255, 255, .2);
+        padding-bottom: 5px;
     }
     .fotoRuta>img{
         width: 100%;
@@ -352,7 +353,7 @@ band=0;
         dis=parseFloat(distancia);
         dis=dis+band;
         
-        contenido.innerHTML+="<div class='rutaName'><h3>"+nombreRuta+"</h3></div><div class='individualKil'><h4>"+distancia+" Km -- "+fecha+"</h4></div><div class='fotoRuta'><img src='fitness-nail.jpg' alt=''></div>"
+        contenido.innerHTML+="<div class='rutaName'><h3>"+nombreRuta+"</h3></div><div class='individualKil'><h4>"+distancia+" Km -- "+fecha+"</h4></div>"
         band=dis;
         totalK.innerHTML=dis;
         

@@ -352,7 +352,7 @@ padding-top:25%;
   }
 }
     #photoGuardada{
-        display: block;
+        display: none;
     }
     .opcionesCamara{
         display: none;
@@ -403,9 +403,10 @@ padding-top:25%;
              <select name="" id="rutasTotal">
                  
              </select>
-             
+              <video id="video"></video>
+              <canvas id="canvas" class="captura"></canvas>
 <img src="#" id="photoGuardada" alt="" style="">
-     <input onclick="takepicture()" type="submit" id="startbutton" value="Tomar">
+     <input type="submit" id="startbutton" value="Tomar">
 
   <div class="opcionesCamara" id="opcionesbtn">
     <div class="buttonOp" id="save" onclick="fotosG()">Save</div>
@@ -421,21 +422,104 @@ padding-top:25%;
         
     <script src="funciones.js"></script>
     <script>
-        var fichero;
-  function takepicture() {
-   navigator.camera.getPicture(correcto, err,  {quality: 120, allowEdit: false} )  
-      
-  }      
-function correcto(rutaImg){
-    document.getElementById('photoGuardada').src=rutaImg;
-    fichero=rutaImg;
-    
-}
+    (function() {
 
-function err(){
-    alert('no estamal')
-}
-</script>
+  var streaming = false,
+      video        = document.querySelector('#video'),
+      canvas       = document.querySelector('#canvas'),
+      photoG        = document.querySelector('#photoGuardada'),
+      startbutton  = document.querySelector('#startbutton'),                save  = document.querySelector('#save'),                               video  = document.querySelector('#video'),
+      opciones= document.querySelector('#opcionesbtn'),
+        again= document.querySelector('#again'),
+              select= document.querySelector('#rutasTotal'),
+
+      
+
+
+      width = 320,
+      height = 0;
+
+  navigator.getMedia = ( navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia ||
+                         navigator.msGetUserMedia);
+
+  navigator.getMedia(
+    {
+      video: true,
+      audio: false
+    },
+    function(stream) {
+      if (navigator.mozGetUserMedia) {
+        video.mozSrcObject = stream;
+      } else {
+        var vendorURL = window.URL || window.webkitURL;
+        video.src = vendorURL.createObjectURL(stream);
+      }
+      video.play();
+    },
+    function(err) {
+      console.log("An error occured! " + err);
+    }
+  );
+
+  video.addEventListener('canplay', function(ev){
+    if (!streaming) {
+      height = video.videoHeight / (video.videoWidth/width);
+      video.setAttribute('width', width);
+      video.setAttribute('height', height);
+      canvas.setAttribute('width', width);
+      canvas.setAttribute('height', height);
+      streaming = true;
+    }
+  }, false);
+
+  function takepicture() {
+    startbutton.style.display="none";
+    video.style.display="none";
+    canvas.style.display="block";
+      opciones.style.display="flex";
+      select.style.display="block";
+    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+    var data = canvas.toDataURL('image/png');
+     /*Salvar la foto*/
+          save.addEventListener('click',function(ev){
+    
+       localStorage.setItem('imagen1', data);
+    
+      var imagendatos=localStorage.getItem('imagen1');
+    startbutton.style.display="block";
+    video.style.display="block";
+    canvas.style.display="none";
+      opciones.style.display="none";
+              select.style.display="none";
+
+        ev.preventDefault();
+  
+      },false);
+       
+      
+  }
+       
+        /*volver a sacar la foto*/
+        again.addEventListener('click',function(ev){
+          alert("otra")
+          startbutton.style.display="block";
+    video.style.display="block";
+    canvas.style.display="none";
+      opciones.style.display="none";
+                  select.style.display="none";
+
+        ev.preventDefault();
+  
+      },false);
+
+  startbutton.addEventListener('click', function(ev){
+      takepicture();
+    ev.preventDefault();
+  }, false);
+
+})();</script>
 
 </body>
 </html>
