@@ -39,7 +39,7 @@ function HtmlIndex(nombre){
         else{
             
         alert("Inicio no estan bien")
-           navigator.vibrate([200, 200])
+           navigator.vibrate([600,10, 600])
 
         }
     
@@ -64,18 +64,28 @@ function cambioHtmlR(nombre){
 
 
                     alert("Inicio Te haz registrado exitosamente");
+                               navigator.vibrate([600,10, 600])
+
                     location.assign(nombre+'.html');
                 }else{
                     alert("Inicio La contraseña no coincide");
+                               navigator.vibrate([600,10, 600])
+
                 }
             }else{
                 alert("Inicio Este usuario ya está registrado")
+                           navigator.vibrate([600,10, 600])
+
             }
         }else{
             alert("Inicio No está ingrsando un correo valido");
+                       navigator.vibrate([600,10, 600])
+
         }
     }else{
         alert("Inicio Hacen falta datos");
+                   navigator.vibrate([600,10, 600])
+
     }
     
 }
