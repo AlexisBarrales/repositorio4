@@ -32,14 +32,15 @@ function HtmlIndex(nombre){
         
     
         if(correo==correoBD && contra == contrasenaBD){
-           navigator.vibrate([200, 200 ,300])
            localStorage.setItem('Sesion', correo);
            location.assign(nombre+'.html');
                 
         }
         else{
             
-            alert("Inicio","no estan bien")
+        alert("Inicio no estan bien")
+           navigator.vibrate([200, 200])
+
         }
     
 }
@@ -62,19 +63,19 @@ function cambioHtmlR(nombre){
                     localStorage.setItem('Contraseña'+correo, contra);
 
 
-                    alert("Inicio","Te haz registrado exitosamente");
+                    alert("Inicio Te haz registrado exitosamente");
                     location.assign(nombre+'.html');
                 }else{
-                    alert("Inicio","La contraseña no coincide");
+                    alert("Inicio La contraseña no coincide");
                 }
             }else{
-                alert("Inicio","Este usuario ya está registrado")
+                alert("Inicio Este usuario ya está registrado")
             }
         }else{
-            alert("Inicio","No está ingrsando un correo valido");
+            alert("Inicio No está ingrsando un correo valido");
         }
     }else{
-        alert("Inicio","Hacen falta datos");
+        alert("Inicio Hacen falta datos");
     }
     
 }
